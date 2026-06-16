@@ -62,6 +62,6 @@ gcc MelMarket.c -o MelMarket
 
 ## Contexto Acadêmico
 
-Disciplina: Algoritmos e programação 1
-Curso: Sistemas de Informação
-Instituição: UFPI
+- Disciplina: Algoritmos e programação 1
+- Curso: Sistemas de Informação
+- Instituição: UFPI
