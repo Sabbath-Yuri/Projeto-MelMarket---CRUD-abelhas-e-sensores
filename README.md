@@ -34,7 +34,6 @@ gcc MelMarket.c -o MelMarket
 
 - Structs
 - Ponteiros
-- Alocação dinâmica de memória
 - Listas encadeadas
 - Relacionamento entre entidades
 - CRUD completo
