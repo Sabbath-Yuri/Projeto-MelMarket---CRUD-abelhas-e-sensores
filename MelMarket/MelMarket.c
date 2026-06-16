@@ -5,7 +5,9 @@
 #define max_abelhas 50
 #define max_sensores 100
 #define valor_mel_kg 25.0
+#ifdef _WIN32
 #include <windows.h>
+#endif
 
 typedef struct tabela_abelha
 {
@@ -50,6 +52,7 @@ float media_temperatura_sensores(tabela_sensores sensores[], int qtdsensores);
 void escolher_regiao_abelha(tabela_abelha abelhas[], int alvo);
 void abelhas_por_regiao (int qtdabelhas, tabela_abelha abelhas[]);
 float estoque_mel(int qtdabelhas, tabela_abelha abelhas[]);
+void pausar();
 void menu_abelhas(int *qtdabelhas, int *prox_id_abelha, tabela_abelha abelhas[], int *qtdsensores, tabela_sensores sensores[]);
 void menu_sensore(int *qtdabelhas, int *prox_id_sensor, tabela_abelha abelhas[], int *qtdsensores, tabela_sensores sensores[]);
 void menu_relatorios(int qtdabelhas, tabela_abelha abelhas[], int qtdsensores, tabela_sensores sensores[]);
@@ -59,8 +62,10 @@ void menu_relatorios(int qtdabelhas, tabela_abelha abelhas[], int qtdsensores, t
 
 int main()
 {
+    #ifdef _WIN32
     SetConsoleOutputCP(CP_UTF8);
     SetConsoleCP(CP_UTF8);
+    #endif
     setlocale(LC_ALL, ".UTF8");
     int opcao;
     int qtdabelhas = 0, qtdsensores = 0, prox_id_abelha = 1, prox_id_sensor = 1;
@@ -586,6 +591,15 @@ float estoque_mel(int qtdabelhas, tabela_abelha abelhas[])//Calcula a quantia de
     return estoque;
 }
 
+void pausar(){
+    #ifdef _WIN32
+    system("pause");
+    #else
+    printf("\nPressione Enter para continuar...");
+    getchar();
+    #endif
+}
+
 void menu_abelhas(int *qtdabelhas, int *prox_id_abelha, tabela_abelha abelhas[], int *qtdsensores, tabela_sensores sensores[])//Local onde acontecem as interações referentes as abelhas
 {
     int alvo, alterar_dados_id, id_digitado, opcao2;
@@ -612,7 +626,7 @@ void menu_abelhas(int *qtdabelhas, int *prox_id_abelha, tabela_abelha abelhas[],
             {
                 printf("A quantidade de abelhas cadastradas já está no limite.\n");
             }
-            system("Pause");
+            pausar();
             break;
 
         case 2:
@@ -626,7 +640,7 @@ void menu_abelhas(int *qtdabelhas, int *prox_id_abelha, tabela_abelha abelhas[],
                 printf("\n");
                 listar_abelhas(*qtdabelhas, abelhas);
             }
-            system("Pause");
+            pausar();
             break;
 
         case 3:
@@ -635,7 +649,7 @@ void menu_abelhas(int *qtdabelhas, int *prox_id_abelha, tabela_abelha abelhas[],
             ler_texto(pesquisa, 40);
             puts("");
             pesquisar_abelhas(*qtdabelhas, pesquisa, abelhas);
-            system("Pause");
+            pausar();
             break;
 
         case 4:
@@ -659,7 +673,7 @@ void menu_abelhas(int *qtdabelhas, int *prox_id_abelha, tabela_abelha abelhas[],
             {
                 printf("Não há abelhas cadastradas!\n");
             }
-            system("Pause");
+            pausar();
             break;
 
         case 5:
@@ -683,7 +697,7 @@ void menu_abelhas(int *qtdabelhas, int *prox_id_abelha, tabela_abelha abelhas[],
             {
                 printf("Não há abelhas cadastradas!\n");
             }
-            system("Pause");
+            pausar();
             break;
 
         case 6:
@@ -721,7 +735,7 @@ void menu_sensore(int *qtdabelhas, int *prox_id_sensor, tabela_abelha abelhas[],
             {
                 printf("Não há abelhas cadastradas, portanto não é possível inserir um novo sensor\n");
             }
-            system("Pause");
+            pausar();
             break;
 
         case 2:
@@ -735,7 +749,7 @@ void menu_sensore(int *qtdabelhas, int *prox_id_sensor, tabela_abelha abelhas[],
             {
                 printf("Não há sensores cadastrados!\n");
             }
-            system("Pause");
+            pausar();
             break;
 
         case 3:
@@ -751,7 +765,7 @@ void menu_sensore(int *qtdabelhas, int *prox_id_sensor, tabela_abelha abelhas[],
             {
                 printf("Não há sensores cadastrados!\n");
             }
-            system("Pause");
+            pausar();
             break;
 
         case 4:
@@ -775,7 +789,7 @@ void menu_sensore(int *qtdabelhas, int *prox_id_sensor, tabela_abelha abelhas[],
             {
                 printf("Não há sensores cadastrados!\n");
             }
-            system("Pause");
+            pausar();
             break;
 
         case 5:
@@ -799,7 +813,7 @@ void menu_sensore(int *qtdabelhas, int *prox_id_sensor, tabela_abelha abelhas[],
             {
                 printf("Não há sensores cadastrados!\n");
             }
-            system("Pause");
+            pausar();
             break;
 
         case 6:
@@ -807,6 +821,7 @@ void menu_sensore(int *qtdabelhas, int *prox_id_sensor, tabela_abelha abelhas[],
         }
     } while (opcao2 != 6);
 }
+
 
 void menu_relatorios(int qtdabelhas, tabela_abelha abelhas[], int qtdsensores, tabela_sensores sensores[])//Local onde acontecem as interações referentes aos relatórios
 {
@@ -832,7 +847,7 @@ void menu_relatorios(int qtdabelhas, tabela_abelha abelhas[], int qtdsensores, t
             {
                 printf("Não há abelhas cadastradas, portanto não é possível haver a média de produção de mel!\n");
             }
-            system("Pause");
+            pausar();
             break;
 
         case 2:
@@ -853,7 +868,7 @@ void menu_relatorios(int qtdabelhas, tabela_abelha abelhas[], int qtdsensores, t
             {
                 printf("Não há sensores cadastrados!\n");
             }
-            system("Pause");
+            pausar();
             break;
 
         case 3:
@@ -866,7 +881,7 @@ void menu_relatorios(int qtdabelhas, tabela_abelha abelhas[], int qtdsensores, t
             {
                 printf("Não há abelhas cadastradas, portanto não é possível haver abelhas em alguma região!\n");
             }
-            system("Pause");
+            pausar();
             break;
 
         case 4:
@@ -880,7 +895,7 @@ void menu_relatorios(int qtdabelhas, tabela_abelha abelhas[], int qtdsensores, t
             {
                 printf("Não há abelhas cadastradas, portanto não é possível haver um estoque de mel!\n");
             }
-            system("Pause");
+            pausar();
             break;
 
         case 5:
@@ -894,7 +909,7 @@ void menu_relatorios(int qtdabelhas, tabela_abelha abelhas[], int qtdsensores, t
             {
                 printf("Não há abelhas cadastradas, portanto o estoque está zerado!\n");
             }
-            system("Pause");
+            pausar();
             break;
 
         case 6:
