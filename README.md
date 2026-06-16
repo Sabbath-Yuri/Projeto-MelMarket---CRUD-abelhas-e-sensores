@@ -60,3 +60,11 @@ gcc MelMarket.c -o MelMarket
 ## Bugs conhecidos
 
 - Não há persistência em arquivo; os dados se perdem ao encerrar o programa.
+
+---
+
+## Contexto Acadêmico
+
+Disciplina: Algoritmos e programação 1
+Curso: Sistemas de Informação
+Instituição: UFPI
