@@ -27,9 +27,7 @@ gcc MelMarket.c -o MelMarket
 ./MelMarket
 ```
 
-> **Atenção:** o sistema foi desenvolvido para Windows. Em Linux/Mac, remova o `#include <windows.h>` e as chamadas `SetConsoleOutputCP` e `SetConsoleCP` do código.
 
----
 ## Conceitos Aplicados
 
 - Structs
